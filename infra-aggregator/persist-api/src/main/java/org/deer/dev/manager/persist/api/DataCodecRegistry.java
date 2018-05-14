@@ -36,5 +36,5 @@ public interface DataCodecRegistry {
   /**
    * Finds codec by ordinal
    */
-  DataCodec<?> getCodec(final int ordinal);
+  DataCodec getCodec(final int ordinal);
 }
