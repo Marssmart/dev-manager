@@ -16,23 +16,23 @@
  *
  */
 
-package org.deer.dev.manager.tx.api;
+package org.deer.dev.manager.persist.api;
 
-import org.deer.dev.manager.tx.api.ex.TransactionCommitFailedException;
-import org.deer.dev.manager.tx.api.ex.TransactionRollbackFailedException;
-
-/**
- * General interface for transactions
- */
-public interface Transaction {
+public interface DataCodec<T> {
 
   /**
-   * Applies changes accumulated by this transaction
+   * Converts object to binary format
    */
-  void commit() throws TransactionCommitFailedException;
+  byte[] toBinary(final T data);
 
   /**
-   * Reverts changes done so far by this transaction
+   * Converts data from binary format
    */
-  void rollback() throws TransactionRollbackFailedException;
+  T fromBinary(final byte[] rawData);
+
+  /**
+   * Ordinal of this codec that uniquely identifies it. Used to identify codec from first 4 bytes of
+   * data
+   */
+  int ordinal();
 }

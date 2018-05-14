@@ -16,23 +16,12 @@
  *
  */
 
-package org.deer.dev.manager.tx.api;
-
-import org.deer.dev.manager.tx.api.ex.TransactionCommitFailedException;
-import org.deer.dev.manager.tx.api.ex.TransactionRollbackFailedException;
+package org.deer.dev.manager.tx.api.ex;
 
 /**
- * General interface for transactions
+ * Intentionally not runtime exception as implementations of transactions in this client should have
+ * specific handling
  */
-public interface Transaction {
+public class TransactionCommitFailedException extends Exception {
 
-  /**
-   * Applies changes accumulated by this transaction
-   */
-  void commit() throws TransactionCommitFailedException;
-
-  /**
-   * Reverts changes done so far by this transaction
-   */
-  void rollback() throws TransactionRollbackFailedException;
 }
