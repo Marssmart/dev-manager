@@ -19,23 +19,37 @@
 package org.deer.dev.manager.tx.api;
 
 import java.util.concurrent.CompletableFuture;
+import org.deer.dev.manager.tx.api.ex.TransactionCommitFailedException;
+import org.deer.dev.manager.tx.api.ex.TransactionRollbackFailedException;
 
 /**
  * Adds async capabilities to {@link Transaction}
- * */
+ */
 public interface AsyncTransaction extends Transaction {
 
   /**
    * Async version of commit() method
    */
   default CompletableFuture<Void> asyncCommit() {
-    return CompletableFuture.runAsync(this::commit);
+    return CompletableFuture.runAsync(() -> {
+      try {
+        commit();
+      } catch (TransactionCommitFailedException e) {
+        throw new IllegalStateException(e);
+      }
+    });
   }
 
   /**
    * Async version of rollback() method
    */
   default CompletableFuture<Void> asyncRollback() {
-    return CompletableFuture.runAsync(this::rollback);
+    return CompletableFuture.runAsync(() -> {
+      try {
+        rollback();
+      } catch (TransactionRollbackFailedException e) {
+        throw new IllegalStateException(e);
+      }
+    });
   }
 }

@@ -28,7 +28,43 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>tx-api</artifactId>
+  <artifactId>persist-xodus</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <!-- Local deps -->
+    <dependency>
+      <groupId>org.deer</groupId>
+      <artifactId>persist-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- Xodus deps -->
+    <dependency>
+      <groupId>org.jetbrains.xodus</groupId>
+      <artifactId>xodus-entity-store</artifactId>
+    </dependency>
+
+    <!-- Utilities,logs,... -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <!--  Test deps-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>

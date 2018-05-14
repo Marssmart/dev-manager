@@ -16,23 +16,25 @@
  *
  */
 
-package org.deer.dev.manager.tx.api;
-
-import org.deer.dev.manager.tx.api.ex.TransactionCommitFailedException;
-import org.deer.dev.manager.tx.api.ex.TransactionRollbackFailedException;
+package org.deer.dev.manager.persist.api;
 
 /**
- * General interface for transactions
+ * Registry for codecs to convert data to/from binary format
  */
-public interface Transaction {
+public interface DataCodecRegistry {
 
   /**
-   * Applies changes accumulated by this transaction
+   * Registers codec for desired type
    */
-  void commit() throws TransactionCommitFailedException;
+  <T> void register(final Class<T> type, final DataCodec<T> codec);
 
   /**
-   * Reverts changes done so far by this transaction
+   * Finds respective codec by provided type
    */
-  void rollback() throws TransactionRollbackFailedException;
+  <T> DataCodec<T> getCodec(final Class<T> type);
+
+  /**
+   * Finds codec by ordinal
+   */
+  DataCodec getCodec(final int ordinal);
 }

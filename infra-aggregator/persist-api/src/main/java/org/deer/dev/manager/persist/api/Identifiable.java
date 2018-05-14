@@ -16,23 +16,16 @@
  *
  */
 
-package org.deer.dev.manager.tx.api;
-
-import org.deer.dev.manager.tx.api.ex.TransactionCommitFailedException;
-import org.deer.dev.manager.tx.api.ex.TransactionRollbackFailedException;
+package org.deer.dev.manager.persist.api;
 
 /**
- * General interface for transactions
+ * Unique identifier that can identify specific data. Used to persist data
  */
-public interface Transaction {
+public interface Identifiable {
 
   /**
-   * Applies changes accumulated by this transaction
+   * Bound to using string keys, for now. Gives more leeway while debug. Its easier to work with
+   * "key-one" than 154724
    */
-  void commit() throws TransactionCommitFailedException;
-
-  /**
-   * Reverts changes done so far by this transaction
-   */
-  void rollback() throws TransactionRollbackFailedException;
+  String getKey();
 }
