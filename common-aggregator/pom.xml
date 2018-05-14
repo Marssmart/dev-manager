@@ -8,6 +8,9 @@
   <groupId>org.deer</groupId>
   <artifactId>common-aggregator</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>common-parent</module>
+  </modules>
   <packaging>pom</packaging>
 
 </project>
