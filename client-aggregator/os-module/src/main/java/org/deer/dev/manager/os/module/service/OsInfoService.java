@@ -18,6 +18,9 @@
 
 package org.deer.dev.manager.os.module.service;
 
+import java.util.Collection;
+import org.deer.dev.manager.os.module.service.dto.SystemProperty;
+
 /**
  * Service providing information about system that node is running on
  */
@@ -29,5 +32,14 @@ public interface OsInfoService {
    * @param propertyName name of the property to retrieve
    * @return if such property exist, return its value, null otherwise
    */
-  String getSystemProperty(String propertyName);
+  SystemProperty getSystemProperty(String propertyName);
+
+  /**
+   * Retrieves all system properties
+   *
+   * @return {@link Collection} of all system properties
+   */
+  Collection<SystemProperty> getAllSystemProperties();
+
+  void setSystemProperty(final SystemProperty systemProperty);
 }
