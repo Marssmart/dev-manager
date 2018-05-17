@@ -16,16 +16,15 @@
  *
  */
 
-package org.deer.dev.manager.persist.api;
+package org.deer.dev.manager.os.module.service;
 
-/**
- * Unique identifier that can identify specific data. Used to persist data
- */
-public interface Identifiable {
+import org.springframework.stereotype.Service;
 
-  /**
-   * Bound to using string keys, for now. Gives more leeway while debug. Its easier to work with
-   * "key-one" than 154724
-   */
-  String getKey();
+@Service
+public class OsInfoServiceImpl implements OsInfoService {
+
+  @Override
+  public String getSystemProperty(final String propertyName) {
+    return System.getProperty(propertyName);
+  }
 }

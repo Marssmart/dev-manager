@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~
-  ~ (C) Copyright ${year} Ján Srniček (https://github.com/Marssmart)
+  ~ (C) Copyright 2018 Ján Srniček (https://github.com/Marssmart)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>infra-parent</artifactId>
-    <groupId>org.deer</groupId>
+    <groupId>org.deer.dev.manager</groupId>
+    <artifactId>proto-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../infra-parent</relativePath>
+    <relativePath>../proto-parent</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -35,7 +35,7 @@
   <dependencies>
     <!-- Local deps -->
     <dependency>
-      <groupId>org.deer</groupId>
+      <groupId>org.deer.dev.manager</groupId>
       <artifactId>persist-api</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -44,6 +44,18 @@
     <dependency>
       <groupId>org.jetbrains.xodus</groupId>
       <artifactId>xodus-entity-store</artifactId>
+    </dependency>
+
+    <!-- Spring -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+
+    <!-- Protobuffers(Any proto file) -->
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
     </dependency>
 
     <!-- Utilities,logs,... -->

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package org.deer.dev.manager.persist.xodus;
+
+message AnyData {
+  string type = 1;
+  google.protobuf.Any data = 2;
+}

@@ -16,16 +16,18 @@
  *
  */
 
-package org.deer.dev.manager.persist.api;
+package org.deer.dev.manager.os.module.service;
 
 /**
- * Unique identifier that can identify specific data. Used to persist data
+ * Service providing information about system that node is running on
  */
-public interface Identifiable {
+public interface OsInfoService {
 
   /**
-   * Bound to using string keys, for now. Gives more leeway while debug. Its easier to work with
-   * "key-one" than 154724
+   * Retrieves a system property
+   *
+   * @param propertyName name of the property to retrieve
+   * @return if such property exist, return its value, null otherwise
    */
-  String getKey();
+  String getSystemProperty(String propertyName);
 }

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package org.deer.dev.manager.persist.xodus.test;
+
+message DataDto {
+  string type = 1;
+  int32 value = 2;
+}
