@@ -21,10 +21,10 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>infra-parent</artifactId>
+    <artifactId>common-parent</artifactId>
     <groupId>org.deer.dev.manager</groupId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../infra-parent</relativePath>
+    <relativePath>../common-parent</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 

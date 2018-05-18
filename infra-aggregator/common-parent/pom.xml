@@ -46,6 +46,8 @@
     <guava.version>25.0-jre</guava.version>
     <spring.version>5.0.6.RELEASE</spring.version>
     <reflections.version>0.9.11</reflections.version>
+    <xodus-entity-store.version>1.2.2</xodus-entity-store.version>
+    <jackson-annotations.version>2.9.5</jackson-annotations.version>
   </properties>
 
   <dependencyManagement>
@@ -54,6 +56,17 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j-api.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jetbrains.xodus</groupId>
+        <artifactId>xodus-entity-store</artifactId>
+        <version>${xodus-entity-store.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson-annotations.version}</version>
       </dependency>
 
       <dependency>
