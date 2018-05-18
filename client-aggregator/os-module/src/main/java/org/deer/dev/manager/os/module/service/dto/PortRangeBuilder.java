@@ -18,26 +18,22 @@
 
 package org.deer.dev.manager.os.module.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class PortRangeBuilder {
 
-public class SystemProperty {
+  private int rangeStart;
+  private int rangeEnd;
 
-  private final String key;
-  private final String value;
-
-  @JsonCreator
-  SystemProperty(@JsonProperty(value = "key", required = true) final String key,
-      @JsonProperty("value") final String value) {
-    this.key = key;
-    this.value = value;
+  public PortRangeBuilder setRangeStart(int rangeStart) {
+    this.rangeStart = rangeStart;
+    return this;
   }
 
-  public String getKey() {
-    return key;
+  public PortRangeBuilder setRangeEnd(int rangeEnd) {
+    this.rangeEnd = rangeEnd;
+    return this;
   }
 
-  public String getValue() {
-    return value;
+  public PortRange createPortRange() {
+    return new PortRange(rangeStart, rangeEnd);
   }
 }

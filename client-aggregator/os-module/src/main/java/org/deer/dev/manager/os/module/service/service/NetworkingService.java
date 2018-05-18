@@ -16,28 +16,19 @@
  *
  */
 
-package org.deer.dev.manager.os.module.service.dto;
+package org.deer.dev.manager.os.module.service.service;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import org.deer.dev.manager.os.module.service.dto.PortRange;
 
-public class SystemProperty {
+/**
+ * Networking capabilities
+ */
+public interface NetworkingService {
 
-  private final String key;
-  private final String value;
-
-  @JsonCreator
-  SystemProperty(@JsonProperty(value = "key", required = true) final String key,
-      @JsonProperty("value") final String value) {
-    this.key = key;
-    this.value = value;
-  }
-
-  public String getKey() {
-    return key;
-  }
-
-  public String getValue() {
-    return value;
-  }
+  /**
+   * @return {@link Set} of opened ports
+   */
+  CompletableFuture<Set<Integer>> scanAvailableTcpPorts(final PortRange portRange);
 }
