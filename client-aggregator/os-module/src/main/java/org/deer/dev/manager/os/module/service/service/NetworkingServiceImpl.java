@@ -39,7 +39,7 @@ public class NetworkingServiceImpl implements NetworkingService {
   private static final Logger LOG = LoggerFactory.getLogger(NetworkingServiceImpl.class);
 
   @Override
-  public CompletableFuture<Set<Integer>> scanAvailableTcpPorts(final PortRange portRange) {
+  public CompletableFuture<Set<Integer>> scanOpenTcpPorts(final PortRange portRange) {
     final int batchSize = 5;
     final int nrOfBatches = portRange.batches(batchSize);
     final int rangeStart = portRange.getRangeStart();
@@ -71,7 +71,7 @@ public class NetworkingServiceImpl implements NetworkingService {
     final int rangeEnd = subRange.getRangeEnd();
     LOG.debug("Processing range[{} - {}]", rangeStart, rangeEnd);
     for (int i = rangeStart; i < rangeEnd; i++) {
-      try (final Socket socket = new Socket("localhost", i);) {
+      try (final Socket socket = new Socket("localhost", i)) {
         LOG.debug("Port {} available", i);
         availablePorts.add(i);
       } catch (IOException e) {

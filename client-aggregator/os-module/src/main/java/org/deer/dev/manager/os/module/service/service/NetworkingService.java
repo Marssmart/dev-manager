@@ -30,5 +30,5 @@ public interface NetworkingService {
   /**
    * @return {@link Set} of opened ports
    */
-  CompletableFuture<Set<Integer>> scanAvailableTcpPorts(final PortRange portRange);
+  CompletableFuture<Set<Integer>> scanOpenTcpPorts(final PortRange portRange);
 }
