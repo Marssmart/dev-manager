@@ -22,7 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import java.util.Collection;
-import org.deer.dev.manager.os.module.service.OsInfoService;
+import org.deer.dev.manager.os.module.service.service.OsInfoService;
 import org.deer.dev.manager.os.module.service.dto.SystemProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

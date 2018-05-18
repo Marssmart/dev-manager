@@ -32,6 +32,7 @@
     <module>persist-api</module>
     <module>persist-xodus</module>
     <module>proto-parent</module>
+    <module>common-logic</module>
   </modules>
   <packaging>pom</packaging>
 

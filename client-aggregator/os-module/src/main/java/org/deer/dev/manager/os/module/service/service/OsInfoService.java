@@ -16,7 +16,7 @@
  *
  */
 
-package org.deer.dev.manager.os.module.service;
+package org.deer.dev.manager.os.module.service.service;
 
 import java.util.Collection;
 import org.deer.dev.manager.os.module.service.dto.SystemProperty;

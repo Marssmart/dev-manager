@@ -16,7 +16,7 @@
  *
  */
 
-package org.deer.dev.manager.os.module.service;
+package org.deer.dev.manager.os.module.service.service;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
