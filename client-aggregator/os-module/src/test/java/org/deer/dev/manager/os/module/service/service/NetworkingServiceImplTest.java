@@ -42,7 +42,7 @@ public class NetworkingServiceImplTest {
   @Test
   public void scanOpenPorts() throws Exception {
     final CompletableFuture<Set<Integer>> scanFuture = service
-        .scanAvailableTcpPorts(new PortRangeBuilder()
+        .scanOpenTcpPorts(new PortRangeBuilder()
             .setRangeStart(0)
             .setRangeEnd(1024)
             .createPortRange());
