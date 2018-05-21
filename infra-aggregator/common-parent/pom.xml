@@ -48,6 +48,7 @@
     <reflections.version>0.9.11</reflections.version>
     <xodus-entity-store.version>1.2.2</xodus-entity-store.version>
     <jackson-annotations.version>2.9.5</jackson-annotations.version>
+    <pitest-maven.version>1.4.0</pitest-maven.version>
   </properties>
 
   <dependencyManagement>
@@ -113,4 +114,33 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <!-- Required because of PIT testing -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-maven</artifactId>
+          <version>${pitest-maven.version}</version>
+          <configuration>
+            <targetClasses>
+              <param>org.deer.dev.manager*</param>
+            </targetClasses>
+            <targetTests>
+              <param>org.deer.dev.manager*</param>
+            </targetTests>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
