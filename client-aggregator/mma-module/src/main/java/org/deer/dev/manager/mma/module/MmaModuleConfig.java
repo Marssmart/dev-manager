@@ -19,6 +19,7 @@
 package org.deer.dev.manager.mma.module;
 
 import javax.sql.DataSource;
+import org.deer.dev.manager.mma.module.cache.AsyncCache;
 import org.deer.dev.manager.mma.module.cache.FightCache;
 import org.deer.dev.manager.mma.module.cache.FighterCache;
 import org.deer.dev.manager.mma.module.dto.Fight;
@@ -63,32 +64,45 @@ public class MmaModuleConfig extends DefaultBatchConfigurer {
     // to ignore DataSource init
   }
 
+  /**
+   * File reader for Fighters
+   */
   @Bean("fighterReader")
   public FlatFileItemReader<Fighter> fighterReader() {
-    return new FlatFileItemReaderBuilder<Fighter>()
-        .name("fighterReader")
-        .resource(new FileSystemResource(fighterFilePath))
-        .linesToSkip(1)//skip header
-        .delimited()
-        .delimiter(";")
-        .includedFields(Fighter.RELEVANT_CSV_COL_INDEXES)
-        .names(Fighter.CSV_COLUMNS)
-        .fieldSetMapper(new BeanWrapperFieldSetMapper<Fighter>() {{
-          setTargetType(Fighter.class);
-        }})
-        .build();
+    return csvFileReader("fighterReader", fighterFilePath,
+        Fighter.CSV_COLUMNS, Fighter.RELEVANT_CSV_COL_INDEXES, Fighter.class);
   }
 
+  /**
+   * File reader for Fights
+   */
+  @Bean("fightReader")
+  public FlatFileItemReader<Fight> fightReader() {
+    return csvFileReader("fightReader", fightFilePath,
+        Fight.CSV_COLUMNS, Fight.RELEVANT_CSV_COL_INDEXES, Fight.class);
+  }
+
+  /**
+   * Import job for Fighters to cache
+   */
   @Bean("fighterImportJob")
   public Job fighterImportJob(@Qualifier("fighterImportStep") Step step,
       final FighterCache fighterCache) {
-    return jobBuilderFactory.get("fighterImportJob")
-        .listener(fighterCache)
-        .flow(step)
-        .end()
-        .build();
+    return createCacheInitJob("fighterImportJob", step, fighterCache);
   }
 
+  /**
+   * Import job for Fights to cache
+   */
+  @Bean("fightImportJob")
+  public Job fightImportJob(@Qualifier("fightImportStep") Step step,
+      final FightCache fightCache) {
+    return createCacheInitJob("fightImportJob", step, fightCache);
+  }
+
+  /**
+   * Fighter processing step
+   */
   @Bean("fighterImportStep")
   public Step fighterImportStep(final ItemReader<Fighter> fighterReader,
       final FighterProcessor fighterProcessor,
@@ -101,32 +115,9 @@ public class MmaModuleConfig extends DefaultBatchConfigurer {
         .build();
   }
 
-  @Bean("fightReader")
-  public FlatFileItemReader<Fight> fightReader() {
-    return new FlatFileItemReaderBuilder<Fight>()
-        .name("fightReader")
-        .resource(new FileSystemResource(fightFilePath))
-        .linesToSkip(1)//skip header
-        .delimited()
-        .delimiter(";")
-        .includedFields(Fight.RELEVANT_CSV_COL_INDEXES)
-        .names(Fight.CSV_COLUMNS)
-        .fieldSetMapper(new BeanWrapperFieldSetMapper<Fight>() {{
-          setTargetType(Fight.class);
-        }})
-        .build();
-  }
-
-  @Bean("fightImportJob")
-  public Job fightImportJob(@Qualifier("fightImportStep") Step step,
-      final FightCache fighterCache) {
-    return jobBuilderFactory.get("fightImportJob")
-        .listener(fighterCache)
-        .flow(step)
-        .end()
-        .build();
-  }
-
+  /**
+   * Fight processing step
+   */
   @Bean("fightImportStep")
   public Step fighterImportStep(final ItemReader<Fight> fightReader,
       final FightProcessor fightProcessor,
@@ -139,5 +130,27 @@ public class MmaModuleConfig extends DefaultBatchConfigurer {
         .build();
   }
 
+  private Job createCacheInitJob(String jobName, Step step, AsyncCache fighterCache) {
+    return jobBuilderFactory.get(jobName)
+        .listener(fighterCache)
+        .flow(step)
+        .end()
+        .build();
+  }
 
+  private static <T> FlatFileItemReader<T> csvFileReader(String readerName, String fighterFilePath,
+      String[] columnNames, Integer[] relevantColumnIndexes, Class<T> handledType) {
+    return new FlatFileItemReaderBuilder<T>()
+        .name(readerName)
+        .resource(new FileSystemResource(fighterFilePath))
+        .linesToSkip(1)//skip header
+        .delimited()
+        .delimiter(";")
+        .includedFields(relevantColumnIndexes)
+        .names(columnNames)
+        .fieldSetMapper(new BeanWrapperFieldSetMapper<T>() {{
+          setTargetType(handledType);
+        }})
+        .build();
+  }
 }
