@@ -31,7 +31,15 @@
     <appender-ref ref="STDOUT"/>
   </logger>
 
-  <logger additivity="false" level="INFO" name="org.springframework">
+  <logger additivity="false" level="ERROR" name="org.springframework">
+    <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <logger additivity="false" level="ERROR" name="org.apache.tomcat">
+    <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <logger additivity="false" level="ERROR" name="ch.qos.logback">
     <appender-ref ref="STDOUT"/>
   </logger>
 
