@@ -38,6 +38,16 @@ public class Fight {
   private int stopageRound;
   private Duration stopageTime;
 
+  /**
+   * @param date Date of the event
+   * @param event Event where fight taken place
+   * @param fightEnd type of fight ending
+   * @param fightEndType more specific description of fight ending
+   * @param fighterRef reference of the fighter in blue corner
+   * @param opponentRef reference of the fighter in red corner
+   * @param stopageRound round where fight was stopped
+   * @param stopageTime time when fight was stopped
+   */
   public Fight(LocalDate date, String event, FightEnd fightEnd, String fightEndType,
       long fighterRef, long opponentRef, int stopageRound, Duration stopageTime) {
     this.date = date;

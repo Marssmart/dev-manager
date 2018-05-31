@@ -33,6 +33,12 @@ public class Fighter {
   private String profileLink;
   private long ref;
 
+  /**
+   * @param firstName First name of the fighter
+   * @param lastName Last name of the fighter
+   * @param profileLink URL to fighter profile
+   * @param ref unique fighter reference
+   */
   public Fighter(String firstName, String lastName, String profileLink, long ref) {
     this.firstName = firstName;
     this.lastName = lastName;
