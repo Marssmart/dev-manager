@@ -148,11 +148,14 @@ public class MmaModuleConfig extends DefaultBatchConfigurer {
         .delimiter(";")
         .includedFields(relevantColumnIndexes)
         .names(columnNames)
-        .fieldSetMapper(new BeanWrapperFieldSetMapper<T>() {
-          {
-            setTargetType(handledType);
-          }
-        })
+        .fieldSetMapper(createFieldSetMapper(handledType))
         .build();
+  }
+
+  private static <T> BeanWrapperFieldSetMapper<T> createFieldSetMapper(Class<T> handledType) {
+    final BeanWrapperFieldSetMapper<T> fieldSetMapper = new BeanWrapperFieldSetMapper<T>() {
+    };
+    fieldSetMapper.setTargetType(handledType);
+    return fieldSetMapper;
   }
 }
