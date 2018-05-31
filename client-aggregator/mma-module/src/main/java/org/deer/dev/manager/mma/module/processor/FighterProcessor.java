@@ -38,7 +38,7 @@ public class FighterProcessor implements ItemProcessor<Fighter, Fighter>, Valida
 
     if (!new EqualsBuilder()
         .append(true, isNotNullAndNonEmptyTrimmed(item.getProfileLink()))
-        .append(true, isNotNullAndNonEmptyTrimmed(item.getRef()))
+        .append(true, item.getRef() != 0)
         .isEquals()) {
       LOG.error("Fighter {} filtered out as invalid", item);
       return null;// it will make it filter out
@@ -49,7 +49,7 @@ public class FighterProcessor implements ItemProcessor<Fighter, Fighter>, Valida
         .setFirstName(item.getFirstName().trim())
         .setLastName(item.getLastName().trim())
         .setProfileLink(item.getProfileLink().trim())
-        .setRef(item.getRef().trim())
+        .setRef(item.getRef())
         .createFighter();
   }
 }

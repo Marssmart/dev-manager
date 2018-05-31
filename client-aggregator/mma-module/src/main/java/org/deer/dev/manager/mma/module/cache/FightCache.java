@@ -18,17 +18,16 @@
 
 package org.deer.dev.manager.mma.module.cache;
 
-import org.deer.dev.manager.mma.module.dto.Fighter;
+import org.deer.dev.manager.mma.module.dto.Fight;
 import org.springframework.stereotype.Repository;
 
 /**
- * In memory cache of Fighters
+ * In memory cache of Fights
  */
 @Repository
-public class FighterCache extends AsyncCache<Fighter> {
+public class FightCache extends AsyncCache<Fight> {
 
-  public FighterCache() {
-    super(Fighter.class);
+  public FightCache() {
+    super(Fight.class);
   }
-
 }

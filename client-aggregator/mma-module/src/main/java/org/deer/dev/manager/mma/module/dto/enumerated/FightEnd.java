@@ -16,19 +16,9 @@
  *
  */
 
-package org.deer.dev.manager.mma.module.cache;
+package org.deer.dev.manager.mma.module.dto.enumerated;
 
-import org.deer.dev.manager.mma.module.dto.Fighter;
-import org.springframework.stereotype.Repository;
+public enum FightEnd {
 
-/**
- * In memory cache of Fighters
- */
-@Repository
-public class FighterCache extends AsyncCache<Fighter> {
-
-  public FighterCache() {
-    super(Fighter.class);
-  }
-
+  Win, Loss, Draw, NC
 }

@@ -25,7 +25,7 @@ public class FighterBuilder {
   private String firstName;
   private String lastName;
   private String profileLink;
-  private String ref;
+  private long ref;
 
   public FighterBuilder setFirstName(String firstName) {
     this.firstName = firstName;
@@ -42,7 +42,7 @@ public class FighterBuilder {
     return this;
   }
 
-  public FighterBuilder setRef(String ref) {
+  public FighterBuilder setRef(long ref) {
     this.ref = ref;
     return this;
   }

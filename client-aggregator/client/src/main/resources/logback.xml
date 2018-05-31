@@ -35,11 +35,15 @@
     <appender-ref ref="STDOUT"/>
   </logger>
 
-  <logger additivity="false" level="ERROR" name="org.apache.tomcat">
+  <logger additivity="false" level="ERROR" name="org.apache">
     <appender-ref ref="STDOUT"/>
   </logger>
 
   <logger additivity="false" level="ERROR" name="ch.qos.logback">
+    <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <logger additivity="false" level="ERROR" name="jetbrains">
     <appender-ref ref="STDOUT"/>
   </logger>
 

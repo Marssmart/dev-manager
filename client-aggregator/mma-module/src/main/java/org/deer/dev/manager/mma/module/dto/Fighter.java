@@ -26,14 +26,14 @@ public class Fighter {
   public static final String[] CSV_COLUMNS = new String[]
       {"firstName", "lastName", "profileLink", "ref"};
 
-  public static final Integer[] RELEVANT_CSV_COLUMENTS = new Integer[]{1, 2, 3, 4};
+  public static final Integer[] RELEVANT_CSV_COL_INDEXES = new Integer[]{1, 2, 3, 4};
 
   private String firstName;
   private String lastName;
   private String profileLink;
-  private String ref;
+  private long ref;
 
-  public Fighter(String firstName, String lastName, String profileLink, String ref) {
+  public Fighter(String firstName, String lastName, String profileLink, long ref) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.profileLink = profileLink;
@@ -41,7 +41,7 @@ public class Fighter {
   }
 
   public Fighter() {
-    this(null, null, null, null);
+    this(null, null, null, 0);
   }
 
   public String getFirstName() {
@@ -68,11 +68,11 @@ public class Fighter {
     this.profileLink = profileLink;
   }
 
-  public String getRef() {
+  public long getRef() {
     return ref;
   }
 
-  public void setRef(String ref) {
+  public void setRef(long ref) {
     this.ref = ref;
   }
 
