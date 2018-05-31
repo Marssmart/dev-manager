@@ -78,10 +78,10 @@ public class Fighter {
 
   @Override
   public String toString() {
-    return "Fighter{" + ", firstName='" + firstName + '\'' +
-        ", lastName='" + lastName + '\'' +
-        ", profileLink='" + profileLink + '\'' +
-        ", ref='" + ref + '\'' +
-        '}';
+    return "Fighter{"
+        + ", firstName='" + firstName + '\''
+        + ", lastName='" + lastName + '\''
+        + ", profileLink='" + profileLink + '\''
+        + ", ref='" + ref + '\'' + '}';
   }
 }

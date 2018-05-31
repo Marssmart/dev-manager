@@ -20,5 +20,5 @@ package org.deer.dev.manager.mma.module.dto.enumerated;
 
 public enum FightEnd {
 
-  Win, Loss, Draw, NC
+  WIN, LOSS, DRAW, NC
 }

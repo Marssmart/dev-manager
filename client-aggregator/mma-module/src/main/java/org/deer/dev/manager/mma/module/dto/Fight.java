@@ -117,4 +117,18 @@ public class Fight {
   public void setStopageTime(Duration stopageTime) {
     this.stopageTime = stopageTime;
   }
+
+  @Override
+  public String toString() {
+    return "Fight{"
+        + "date=" + date
+        + ", event='" + event + '\''
+        + ", fightEnd=" + fightEnd
+        + ", fightEndType='" + fightEndType + '\''
+        + ", fighterRef=" + fighterRef
+        + ", opponentRef=" + opponentRef
+        + ", stopageRound=" + stopageRound
+        + ", stopageTime=" + stopageTime
+        + '}';
+  }
 }

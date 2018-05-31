@@ -43,6 +43,9 @@ public abstract class AsyncCache<T> extends JobExecutionListenerSupport implemen
   private final List<T> items;
   private final Class<T> handledType;
 
+  /**
+   * @param handledType type cached by this cache
+   */
   public AsyncCache(final Class<T> handledType) {
     this.handledType = handledType;
     initLock = new ReentrantLock();
