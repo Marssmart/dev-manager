@@ -48,6 +48,7 @@
     <reflections.version>0.9.11</reflections.version>
     <xodus-entity-store.version>1.2.2</xodus-entity-store.version>
     <jackson-annotations.version>2.9.5</jackson-annotations.version>
+    <commons-lang3.version>3.7</commons-lang3.version>
   </properties>
 
   <dependencyManagement>
@@ -79,6 +80,11 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
       </dependency>
 
       <dependency>

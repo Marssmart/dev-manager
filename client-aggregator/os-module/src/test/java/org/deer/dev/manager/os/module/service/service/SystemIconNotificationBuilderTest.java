@@ -34,7 +34,7 @@ public class SystemIconNotificationBuilderTest {
   private SystemIconNotificationBuilder notificationBuilder;
 
   @ClassRule
-  public static final NonHeadlessEnvironmentRule TEST_RUN_RULE = new NonHeadlessEnvironmentRule();
+  public static final LinuxEnvironmentRule TEST_RUN_RULE = new LinuxEnvironmentRule();
 
   @Before
   public void init() {

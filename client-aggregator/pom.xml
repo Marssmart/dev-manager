@@ -34,6 +34,7 @@
   <modules>
     <module>client</module>
     <module>os-module</module>
+    <module>mma-module</module>
   </modules>
 
 </project>
