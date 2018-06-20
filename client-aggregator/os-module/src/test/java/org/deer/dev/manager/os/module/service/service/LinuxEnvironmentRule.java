@@ -18,24 +18,26 @@
 
 package org.deer.dev.manager.os.module.service.service;
 
-import java.awt.GraphicsEnvironment;
+
+import static org.apache.commons.lang3.SystemUtils.IS_OS_LINUX;
+
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 /**
- * SystemTray used for notifications can't be retrieved in headless mode/os
+ * SystemTray used for notifications can't be retrieved on linux based os
  */
-public class NonHeadlessEnvironmentRule implements TestRule {
+public class LinuxEnvironmentRule implements TestRule {
 
   @Override
   public Statement apply(Statement statement, Description description) {
     return new Statement() {
       @Override
       public void evaluate() throws Throwable {
-        if (GraphicsEnvironment.isHeadless()) {
-          throw new AssumptionViolatedException("Headless system, skipping test");
+        if (IS_OS_LINUX) {
+          throw new AssumptionViolatedException("Linux OS, skipping test");
         }
         statement.evaluate();
       }
